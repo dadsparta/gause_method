@@ -13,7 +13,7 @@ Future<void> main() async {
   ]);
   runApp(
     GetMaterialApp(
-      title: "MyFamily",
+      title: "GauseMethod",
       getPages: AppPages.routes,
       locale: Locale('en'),
       translationsKeys: AppTranslation.translations,
