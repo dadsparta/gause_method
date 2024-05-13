@@ -5,15 +5,22 @@ import 'package:gausemethod/core/consts/texts.dart';
 import 'package:get/get.dart';
 
 class SavingsTile extends StatelessWidget {
+  final double amountOfSaving;
 
-  final double progressOfSavings;
+  final double finalSavingAmount;
+  late double progressOfSavings;
   final String imageURL;
   final String titleOfGoal;
 
-  const SavingsTile({
+  SavingsTile({
     super.key,
-    required this.titleOfGoal, required this.progressOfSavings, required this.imageURL,
-  });
+    required this.titleOfGoal,
+    required this.imageURL,
+    required this.amountOfSaving,
+    required this.finalSavingAmount,
+  }){
+    calculatePercentage();
+  }
 
   void goToDetailPage(String imageURL, double value, String title) {
     Get.toNamed(Routes.savingDetail, arguments: {
@@ -21,6 +28,10 @@ class SavingsTile extends StatelessWidget {
       'value': value,
       'title': title,
     });
+  }
+
+  void calculatePercentage() {
+    progressOfSavings = 100 * amountOfSaving / finalSavingAmount;
   }
 
   @override
@@ -32,7 +43,11 @@ class SavingsTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: GestureDetector(
-        onTap: () => goToDetailPage(imageURL, progressOfSavings, titleOfGoal),
+        onTap: () => goToDetailPage(
+          imageURL,
+          progressOfSavings,
+          titleOfGoal,
+        ),
         child: ListView(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -40,7 +55,9 @@ class SavingsTile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(12),
+                ),
                 child: Image.network(
                   imageURL,
                   fit: BoxFit.cover,
@@ -51,11 +68,14 @@ class SavingsTile extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
               child: Row(
                 children: [
-                  Expanded(flex: 2, child: AppText.titleGoalTile(titleOfGoal)),
+                  Expanded(
+                    flex: 2,
+                    child: AppText.titleGoalTile(titleOfGoal),
+                  ),
                   Expanded(
                     flex: 1,
                     child: AppText.percentageTile(
-                        '${(progressOfSavings * 100).toInt()}%/100%'),
+                        '${(progressOfSavings).toInt()}%/100%'),
                   ),
                 ],
               ),
@@ -63,7 +83,8 @@ class SavingsTile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(14),
               child: LinearProgressIndicator(
-                value: progressOfSavings,
+                value: progressOfSavings /
+                    100,
                 color: AppColors.progressIndicatorColor,
               ),
             )

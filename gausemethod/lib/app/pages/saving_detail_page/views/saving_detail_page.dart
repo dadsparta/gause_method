@@ -13,8 +13,10 @@ class SavingDetailView extends GetView<SavingDetailController> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 14),
-          child: ListView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              SizedBox(height: 20),
               ClipRRect(
                 borderRadius: const BorderRadius.all(
                   Radius.circular(12),
@@ -28,12 +30,12 @@ class SavingDetailView extends GetView<SavingDetailController> {
                 children: [
                   Expanded(
                     flex: 2,
-                    child: AppText.titleGoalTileDetail('Санкт-Питербург'),
+                    child: AppText.titleGoalTileDetail(controller.title),
                   ),
                   Expanded(
                     flex: 1,
                     child: AppText.percentageTile(
-                        '${(controller.value * 100).toInt()}%/100%'),
+                        '${(controller.value).toInt()}%/100%'),
                   ),
                 ],
               ),
@@ -44,54 +46,24 @@ class SavingDetailView extends GetView<SavingDetailController> {
                 value: controller.value,
                 color: AppColors.progressIndicatorColor,
               ),
-              Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: AppColors.buttonsColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
+              const SizedBox(height: 10),
+              Expanded(
+                child: GridView.builder(
+                  physics: ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 100,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(1),
+                      child: Container(
+                        decoration: BoxDecoration(color: AppColors.buttonsColor,borderRadius: BorderRadius.all(Radius.circular(20),),),
+                        child: Center(child: Text((index + 1).toString())),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text('sdwg'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: AppColors.buttonsColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text('sdwg'),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: AppColors.buttonsColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text('sdwg'),
-                      ),
-                    ),
-                  )
-                ],
+                    );
+                  },
+                ),
               )
             ],
           ),
