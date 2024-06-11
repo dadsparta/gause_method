@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:gausemethod/app/collection.dart';
 import 'package:gausemethod/app/global_widgets/savings_tile.dart';
-import 'package:gausemethod/app/pages/home_page/tabs/main_page/controllers/main_page_controller.dart';
+import 'package:gausemethod/app/pages/home/tabs/main_page/controllers/main_page_controller.dart';
 import 'package:gausemethod/core/consts/app_colors.dart';
 import 'package:gausemethod/core/consts/texts.dart';
 import 'package:get/get.dart';

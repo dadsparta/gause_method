@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gausemethod/app/pages/home_page/tabs/main_page/views/main_page_view.dart';
-import 'package:gausemethod/app/pages/home_page/tabs/settings/views/settings_view.dart';
+import 'package:gausemethod/app/pages/home/tabs/main_page/views/main_page_view.dart';
+import 'package:gausemethod/app/pages/home/tabs/settings/views/settings_view.dart';
+
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {

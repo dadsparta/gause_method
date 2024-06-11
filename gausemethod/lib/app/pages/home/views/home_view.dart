@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gausemethod/app/pages/home_page/controllers/home_controller.dart';
+import 'package:gausemethod/app/pages/home/controllers/home_controller.dart';
 import 'package:gausemethod/core/consts/app_colors.dart';
 import 'package:get/get.dart';
 
