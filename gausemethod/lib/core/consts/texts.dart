@@ -31,6 +31,19 @@ class AppText extends Text {
         textAlign: textAlign, maxLines: 1,
       );
 
+  factory AppText.onboardingTitle(
+      String text, {
+        Color color = const Color(0xFFD7AE0D),
+        TextAlign textAlign = TextAlign.center,
+      }) =>
+      AppText(
+        text,
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        color: color,
+        textAlign: textAlign, maxLines: 3,
+      );
+
   factory AppText.titleGoalTile(
     String text, {
     Color color = const Color(0xFFD7AE0D),

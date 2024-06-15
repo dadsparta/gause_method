@@ -3,8 +3,15 @@ import 'package:gausemethod/app/pages/home/tabs/main_page/views/main_page_view.d
 import 'package:gausemethod/app/pages/home/tabs/settings/views/settings_view.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class HomeController extends GetxController {
+
+  @override
+  void onInit() {
+
+    super.onInit();
+  }
   final PageController pageController = PageController();
   final List pages = [MainPageView(), SettingsView()];
   final RxInt selectedPageIndex = 0.obs;
